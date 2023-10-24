@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Booking</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to Flight Booking</h1>
+    <form id="bookingForm">
+        <input type="text" id="name" placeholder="Name" required><br><br>
+        <input type="text" id="destination" placeholder="Destination" required><br><br>
+        <input type="date" id="date" required><br><br>
+        <button type="button" onclick="addBooking()">Book Flight</button>
+    </form>
+    <br><br>
+    <button type="button" onclick="displayBookings()">Show Bookings</button>
+    <div id="bookingsList"></div>
+
+    <script>
+        function addBooking() {
+            const name = document.getElementById('name').value;
+            const destination = document.getElementById('destination').value;
+            const date = document.getElementById('date').value;
+
+            fetch('http://localhost:3000/bookFlight', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, destination, date }),
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayBookings() {
+            fetch('http://localhost:3000/getBookings')
+                .then(response => response.json())
+                .then(data => {
+                    const bookingsList = document.getElementById('bookingsList');
+                    bookingsList.innerHTML = '';
+                    data.forEach(booking => {
+                        const bookingDiv = document.createElement('div');
+                        bookingDiv.textContent = `Name: ${booking.name}, Destination: ${booking.destination}, Date: ${booking.date}`;
+                        bookingsList.appendChild(bookingDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>

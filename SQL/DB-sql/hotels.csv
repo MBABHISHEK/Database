@@ -1,0 +1,10 @@
+id,place,room_type,price_per_night,amenities,rating
+1,London,Suite,"20,500","Laundry , Wifi",4.8
+2,Mumabi,Executive,"5,000",Pet Friendly services,4
+3,Mysore,Family room,"3,500",in Room amenities,3.8
+4,Paris,Dulexe,"6,000",Buisness center,5
+5,Bangalore,Double,"4,000",Air Conditioning,4.2
+6,Manali,Connecting rooms,"3,456",Heater,3.7
+7,Duabi,Pent house,"12,000","Wifi, Spa and wellness centre",4.6
+8,Maldives,Suite,"10,000",Fitness Center,3.8
+9,New York,Adjacent Rooms,"5,500","Wifi , Air conditioning",3.5
